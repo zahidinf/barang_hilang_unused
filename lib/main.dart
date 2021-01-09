@@ -4,6 +4,7 @@ import 'package:barang_hilang/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
+      title: 'BarangHilang.com',
       theme:
           ThemeData(primaryColor: Colors.red, accentColor: Colors.yellowAccent),
       debugShowCheckedModeBanner: false,
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 3), () => runApp(MyApp()));
+    Timer(Duration(seconds: 3), () => runApp(LoginPage()));
   }
 
   @override
@@ -97,11 +98,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-class MyApp extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BarangHilang.com',
+      title: 'Login',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.black,
@@ -269,7 +270,7 @@ class _LoginState extends State<Login> {
                       height: 50,
                       child: InkWell(
                         splashColor: Colors.white,
-                        onTap: () {},
+                        onTap: () => runApp(RegisterPage()),
                         child: Center(
                           child: Text(
                             "Register",
@@ -292,6 +293,72 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RegisterPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Register',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.black,
+      ),
+      home: Register(),
+    );
+  }
+}
+
+class Register extends StatefulWidget {
+  @override
+  _RegisterState createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Text(
+                "This is register page",
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Card(
+              color: Colors.red[800],
+              elevation: 5,
+              child: Container(
+                height: 50,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () => runApp(LoginPage()),
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
